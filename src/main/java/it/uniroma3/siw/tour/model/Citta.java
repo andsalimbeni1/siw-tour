@@ -1,5 +1,8 @@
 package it.uniroma3.siw.tour.model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +24,7 @@ public class Citta {
 	private String nome;
 	
 	@ManyToMany(mappedBy="citta")
-	private Escursione escursione;
+	private List<Escursione> escursioni = new LinkedList<>();
 	
 	@ManyToOne
 	@JoinColumn(name="regione_id")
@@ -29,7 +32,7 @@ public class Citta {
 	
 	@OneToMany
 	@JoinColumn(name="attrazione_id")
-	private Attrazione attrazioni;
+	private List<Attrazione> attrazioni = new LinkedList<>();
 
 	public Long getId() {
 		return id;
@@ -47,14 +50,6 @@ public class Citta {
 		this.nome = nome;
 	}
 
-	public Escursione getEscursione() {
-		return escursione;
-	}
-
-	public void setEscursione(Escursione escursione) {
-		this.escursione = escursione;
-	}
-
 	public Regione getRegione() {
 		return regione;
 	}
@@ -63,11 +58,20 @@ public class Citta {
 		this.regione = regione;
 	}
 
-	public Attrazione getAttrazioni() {
+	public List<Escursione> getEscursioni() {
+		return escursioni;
+	}
+
+	public void setEscursioni(List<Escursione> escursioni) {
+		this.escursioni = escursioni;
+	}
+
+	public List<Attrazione> getAttrazioni() {
 		return attrazioni;
 	}
 
-	public void setAttrazioni(Attrazione attrazioni) {
+	public void setAttrazioni(List<Attrazione> attrazioni) {
 		this.attrazioni = attrazioni;
 	}
+	
 }
