@@ -16,7 +16,7 @@ import it.uniroma3.siw.tour.model.Attrazione;
 import it.uniroma3.siw.tour.service.AttrazioneService;
 
 @Controller
-public class AttrazioneeController {
+public class AttrazioneController {
 	
 	@Autowired
 	private AttrazioneService attrazioneService; 

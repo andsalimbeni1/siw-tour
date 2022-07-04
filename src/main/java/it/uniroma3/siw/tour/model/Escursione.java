@@ -33,7 +33,7 @@ public class Escursione {
 	
 	@ManyToMany
 	@JoinTable(name="escursione_città", joinColumns= @JoinColumn(name="escursione_id", referencedColumnName= "id"))
-	private List<Citta> piatti = new LinkedList<>();
+	private List<Citta> citta = new LinkedList<>();
 
 	public Long getId() {
 		return id;
@@ -67,13 +67,12 @@ public class Escursione {
 		this.guida = guida;
 	}
 
-	public List<Citta> getPiatti() {
-		return piatti;
+	public List<Citta> getCitta() {
+		return citta;
 	}
 
-	public void setPiatti(List<Citta> piatti) {
-		this.piatti = piatti;
+	public void setCitta(List<Citta> citta) {
+		this.citta = citta;
 	}
-	
 	
 }
