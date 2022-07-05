@@ -22,7 +22,7 @@ import it.uniroma3.siw.tour.service.GuidaService;
 import it.uniroma3.siw.tour.service.CittaService;
 
 @Controller
-public class BuffetController {
+public class EscursioneController {
 	
 	@Autowired
 	private EscursioneService escursioneService;
@@ -47,7 +47,7 @@ public class BuffetController {
 		model.addAttribute("escursione", escursione);
 		model.addAttribute("listaCitta", listaCitta);
 		
-		return "buffet";
+		return "escursione";
 	}
 	
 	@GetMapping("/admin/escursioneForm")
@@ -79,11 +79,11 @@ public class BuffetController {
 	@GetMapping("/admin/deleteEscursione/{id}")
 	public String deleteEscursione(@PathVariable("id") Long id) {
 		escursioneService.deleteEscursioneById(id);
-		return "redirect:/allBuffet";
+		return "redirect:/allEscursioni";
 	}
 	
-	@PostMapping("/admin/buffetForm")
-	private String postBuffetForm(@Valid @ModelAttribute("escursione") Escursione escursione, @RequestParam("citta1") Citta citta1,
+	@PostMapping("/admin/escursioneForm")
+	private String postEscursioneForm(@Valid @ModelAttribute("escursione") Escursione escursione, @RequestParam("citta1") Citta citta1,
 			@RequestParam("citta2") Citta citta2, @RequestParam("citta3") Citta citta3, @RequestParam("citta4") Citta citta4,
 			@RequestParam("guidaSelezionata") Guida guida, BindingResult bindingResult) {
 		
@@ -101,8 +101,8 @@ public class BuffetController {
 		}
 	}
 	
-	@PostMapping("/admin/editBuffetForm/{id}")
-	private String editBuffetPost(@Valid @ModelAttribute("escursione") Escursione escursione, @PathVariable("id") Long id, @RequestParam("citta1") Citta citta1,
+	@PostMapping("/admin/editEscursioneForm/{id}")
+	private String editEscursionePost(@Valid @ModelAttribute("escursione") Escursione escursione, @PathVariable("id") Long id, @RequestParam("citta1") Citta citta1,
 			@RequestParam("citta2") Citta citta2, @RequestParam("citta3") Citta citta3, @RequestParam("citta4") Citta citta4,
 			@RequestParam("guidaSelezionata") Guida guida, BindingResult bindingResult) {
 		

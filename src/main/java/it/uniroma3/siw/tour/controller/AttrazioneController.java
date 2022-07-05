@@ -34,16 +34,16 @@ public class AttrazioneController {
 	}
 	
 	@GetMapping("/admin/attrazioneForm")
-	private String getattrazioneForm(Model model) {
+	private String getAttrazioneForm(Model model) {
 		model.addAttribute("attrazione", new Attrazione());
         
         return "/admin/attrazioneForm";
 	}
 	
-	@GetMapping("/admin/deleteattrazione/{id}")
-	public String deleteattrazione(@PathVariable("id") Long id) {
+	@GetMapping("/admin/deleteAttrazione/{id}")
+	public String deleteAttrazione(@PathVariable("id") Long id) {
 		attrazioneService.deleteAttrazioneById(id);
-		return "redirect:/allIngredienti";
+		return "redirect:/allAttrazioni";
 	}
 	
 	@PostMapping("/admin/attrazioneForm")
@@ -51,7 +51,7 @@ public class AttrazioneController {
 		
 		if(!bindingResult.hasErrors()) {
 			attrazioneService.saveAttrazione(attrazione);
-			return "redirect:/allIngredienti";
+			return "redirect:/allAttrazioni";
 		} else {
 			return "admin/attrazioneForm";
 		}

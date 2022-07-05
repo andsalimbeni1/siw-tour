@@ -16,18 +16,18 @@ import it.uniroma3.siw.tour.repository.AttrazioneRepository;
 public class AttrazioneService {
 	
 	@Autowired
-	private AttrazioneRepository AttrazioneRepository;
+	private AttrazioneRepository attrazioneRepository;
 	
-	public Attrazione saveAttrazione(Attrazione Attrazione) {
-		return AttrazioneRepository.save(Attrazione);
+	public Attrazione saveAttrazione(Attrazione attrazione) {
+		return attrazioneRepository.save(attrazione);
 	}
 	
 	public void deleteAttrazioneById(Long id) {
-		AttrazioneRepository.deleteById(id);
+		attrazioneRepository.deleteById(id);
 	}
 	
 	public Attrazione attrazioneById(Long id) {
-		Optional<Attrazione> optional = AttrazioneRepository.findById(id);
+		Optional<Attrazione> optional = attrazioneRepository.findById(id);
 		
 		if(optional.isPresent()) {
 			return optional.get();
@@ -36,8 +36,8 @@ public class AttrazioneService {
 		}
 	}
 
-	public boolean alreadyExists(Attrazione Attrazione) {
-		List<Attrazione> list = this.AttrazioneRepository.findByNome(Attrazione.getNome());
+	public boolean alreadyExists(Attrazione attrazione) {
+		List<Attrazione> list = this.attrazioneRepository.findByNome(attrazione.getNome());
 		if (list.size() > 0) {
 			return true;
 		} else {
@@ -46,6 +46,6 @@ public class AttrazioneService {
 	} 
 	
 	public List<Attrazione> getAllAttrazioni(){
-		return(List<Attrazione>) AttrazioneRepository.findAll();
+		return(List<Attrazione>) attrazioneRepository.findAll();
 	}
 }
