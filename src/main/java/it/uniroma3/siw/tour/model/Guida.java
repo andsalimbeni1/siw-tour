@@ -25,7 +25,7 @@ public class Guida {
 	@NotBlank(message="Inserire una nazionalità")
 	private String nazionalita;
 	
-	@OneToMany(mappedBy = "chef")
+	@OneToMany(mappedBy = "guida")
 	private List<Escursione> escursioni;
 
 	public Long getId() {

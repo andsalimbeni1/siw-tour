@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.tour.model.Attrazione;
 import it.uniroma3.siw.tour.model.Citta;
+import it.uniroma3.siw.tour.model.Regione;
 import it.uniroma3.siw.tour.service.AttrazioneService;
 import it.uniroma3.siw.tour.service.CittaService;
+import it.uniroma3.siw.tour.service.RegioneService;
 
 @Controller
 public class CittaController {
@@ -27,10 +29,13 @@ public class CittaController {
 	
 	@Autowired
 	private CittaService cittaService;
+	
+	@Autowired
+	private RegioneService regioneService;
 
 	@GetMapping("/allCitta")
 	private String allCitta(Model model) {
-		model.addAttribute("citta", this.cittaService.getAllCitta());
+		model.addAttribute("cittas", this.cittaService.getAllCitta());
 		return "allCitta";
 	}
 	
@@ -48,6 +53,7 @@ public class CittaController {
 	@GetMapping("/admin/cittaForm")
 	private String getCittaForm(Model model) {
 		model.addAttribute("citta", new Citta());
+		model.addAttribute("listaRegioni", regioneService.getAllRegioni());
         model.addAttribute("attrazioni", attrazioneService.getAllAttrazioni());
         
         return "/admin/cittaForm";
@@ -62,9 +68,10 @@ public class CittaController {
 	@PostMapping("/admin/cittaForm")
 	private String postCittaForm(@Valid @ModelAttribute("citta") Citta citta, @RequestParam("attrazione1") Attrazione attrazione1,
 			@RequestParam("attrazione2") Attrazione attrazione2, @RequestParam("attrazione3") Attrazione attrazione3,
-			@RequestParam("attrazione4") Attrazione attrazione4, BindingResult bindingResult) {
+			@RequestParam("attrazione4") Attrazione attrazione4, @RequestParam("regioneSelezionata") Regione regione, BindingResult bindingResult) {
 		
 		if(!bindingResult.hasErrors()) {
+			citta.setRegione(regione);
 			citta.getAttrazioni().add(attrazione1);
 			citta.getAttrazioni().add(attrazione2);
 			citta.getAttrazioni().add(attrazione3);

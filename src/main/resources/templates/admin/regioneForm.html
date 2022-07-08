@@ -37,9 +37,9 @@
 </head>
 <body>
 	<div class="p-4 main-wrapper my-5 m-auto rounded">
-		<h1 class="border-bottom pb-3">Aggiungi chef</h1>
+		<h1 class="border-bottom pb-3">Aggiungi regione</h1>
 		
-		<form action="#" th:action="@{/admin/chefForm}" method="post" th:object="${chef}">
+		<form action="#" th:action="@{/admin/regioneForm}" method="post" th:object="${regione}">
 		
 			<div class="mt-4">
 			<label class="form-label fs-4">Nome:</label>
@@ -47,20 +47,14 @@
 			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Errore nome</span><br/>
 			</div>
 			
-			<div class="mt-2">
-			<label class="form-label fs-4">Cognome:</label>
-			<input class="form-control" type="text" placeholder = "Cognome" th:field="*{cognome}"/>
-			<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}">Errore cognome</span><br/>
-			</div>
-			
-			<div class="my-2">
-			<label class="form-label fs-4">Nazionalità:</label>
-			<input class="form-control" type="text" placeholder = "Nazionalità" th:field="*{nazionalita}"/>
-			<span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}">Errore nazionalità</span><br/>
+			<div>
+			<label>Mare</label>
+			<input type="checkbox" th:field="*{mare}">
+			<span th:if="${#fields.hasErrors('mare')}" th:errors="*{mare}">Mare error</span><br/>
 			</div>
 			
 			<button class="btn btn-outline-success my-4" type="submit">Aggiungi</button>
-			<a class="btn btn-outline-dark my-4" role = "button" href="/allChefs" th:href="@{/allChefs}">Elenco chef</a>
+			<a class="btn btn-outline-dark my-4" role = "button" href="/allGuide" th:href="@{/allRegioni}">Elenco regioni</a>
 			<a class="btn btn-outline-dark my-4 mx-auto" role = "button" th:href="@{/home}">Home</a>
 			
 		</form>

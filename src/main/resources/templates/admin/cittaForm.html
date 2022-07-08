@@ -41,9 +41,9 @@
 </head>
 <body>
 	<div class="p-4 main-wrapper my-5 m-auto rounded">
-		<h1 class="border-bottom pb-3">Aggiungi piatto</h1>
+		<h1 class="border-bottom pb-3">Aggiungi città</h1>
 		
-		<form action="#" th:action="@{/admin/piattoForm}" method="post" th:object="${piatto}">
+		<form action="#" th:action="@{/admin/cittaForm}" method="post" th:object="${citta}">
 		
 			<div class="mt-4">
 			<label class="form-label fs-4">Nome:</label>
@@ -51,50 +51,53 @@
 			<span th:if="${#fields.hasErrors('nome')}" th:errors="{nome}">Errore nome</span><br/>
 			</div>
 			
-			<div class="mt-2">
-			<label class="form-label fs-4">Descrizione:</label>
-			<input class="form-control" type="text" placeholder = "Descrizione" th:field="*{descrizione}" required/>
-			<span th:if="${#fields.hasErrors('descrizione')}" th:errors="{descrizione}">Errore descrizione</span><br/>
-			</div>
-			
-			<div class="mt-2">
-			<label class="form-label fs-4">Ingrediente 1:</label>
-			<select class="form-select" th:object="${ingrediente1}" name="ingrediente1" required>
-				<option th:each="ingrediente1 : ${ingredienti}"
-						th:value="${ingrediente1.id}"
-						th:text="${ingrediente1.nome}">
+			<div class="my-2">
+			<label class="form-label fs-4">Regione:</label>
+			<select class="form-select " th:object="${listaRegioni}" name="regioneSelezionata" required>
+				<option th:each="regione : ${listaRegioni}"
+                            th:value="${regione.id}"
+                            th:text="${regione.nome}">
 			</select>
 			</div>
 			
 			<div class="mt-2">
-			<label class="form-label fs-4">Ingrediente 2:</label>
-			<select class="form-select" th:object="${ingrediente2}" name="ingrediente2" required>
-				<option th:each="ingrediente2 : ${ingredienti}"
-						th:value="${ingrediente2.id}"
-						th:text="${ingrediente2.nome}">
+			<label class="form-label fs-4">Attrazione 1:</label>
+			<select class="form-select" th:object="${attrazione1}" name="attrazione1" required>
+				<option th:each="attrazione1 : ${attrazioni}"
+						th:value="${attrazione1.id}"
+						th:text="${attrazione1.nome}">
 			</select>
 			</div>
 			
 			<div class="mt-2">
-			<label class="form-label fs-4">Ingrediente 3:</label>
-			<select class="form-select" th:object="${ingrediente3}" name="ingrediente3" required>
-				<option th:each="ingrediente3 : ${ingredienti}"
-						th:value="${ingrediente3.id}"
-						th:text="${ingrediente3.nome}">
+			<label class="form-label fs-4">Attrazione 2:</label>
+			<select class="form-select" th:object="${attrazione2}" name="attrazione2" required>
+				<option th:each="attrazione2 : ${attrazioni}"
+						th:value="${attrazione2.id}"
+						th:text="${attrazione2.nome}">
+			</select>
+			</div>
+			
+			<div class="mt-2">
+			<label class="form-label fs-4">Attrazione 3:</label>
+			<select class="form-select" th:object="${attrazione3}" name="attrazione3" required>
+				<option th:each="attrazione3 : ${attrazioni}"
+						th:value="${attrazione3.id}"
+						th:text="${attrazione3.nome}">
 			</select>
 			</div>
 			
 			<div class="my-2">
-			<label class="form-label fs-4">Ingrediente 4:</label>
-			<select class="form-select" th:object="${ingrediente4}" name="ingrediente4" required>
-				<option th:each="ingrediente4 : ${ingredienti}"
-						th:value="${ingrediente4.id}"
-						th:text="${ingrediente4.nome}">
+			<label class="form-label fs-4">Attrazione 4:</label>
+			<select class="form-select" th:object="${attrazione4}" name="attrazione4" required>
+				<option th:each="attrazione4 : ${attrazioni}"
+						th:value="${attrazione4.id}"
+						th:text="${attrazione4.nome}">
 			</select>
 			</div>
 			
 			<button class="btn btn-outline-success my-4" type="submit">Aggiungi</button>
-			<a class="btn btn-outline-dark my-4" role="button" th:href="@{/allPiatti}">Elenco piatti</a>
+			<a class="btn btn-outline-dark my-4" role="button" th:href="@{/allCitta}">Elenco città</a>
 			<a class="btn btn-outline-dark my-4 mx-auto" role = "button" th:href="@{/home}">Home</a>
 		
 		</form>

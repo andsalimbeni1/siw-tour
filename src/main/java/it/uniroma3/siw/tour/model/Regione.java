@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -20,6 +21,7 @@ public class Regione {
 	@NotBlank(message="Inserire un nome")
 	private String nome;
 	
+	@AssertFalse
 	private Boolean mare;
 	
 	@OneToMany(mappedBy="regione")

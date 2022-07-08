@@ -39,17 +39,18 @@
 </head>
 <body>
 <div class="p-4 main-wrapper my-5 m-auto rounded" align="center">
-	<h1 class="border-bottom pb-3">Elenco escursioni</h1>
+<h1 class="border-bottom pb-3">Elenco guide</h1>
 	<ul class="list-group list-group-flush rounded my-4">
-	<li class="list-group-item fs-5" th:each="escursione : ${escursioni}">
-		<a href="escursione.html"
-		th:href="@{'/escursione/'+${escursione.id}}"
-		th:text="${escursione.nome}">Escursione</a>
+	<li class="list-group-item fs-5" th:each="regione : ${regioni}">
+		<a href="regione.html"
+		th:href="@{'/regione'+'/'+${regione.id}}"
+		th:text="${regione.nome}">Regione</a>
 	</li>
 	</ul>
-	<a class="btn btn-outline-dark my-2" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/admin/escursioneForm}">Aggiungi escursione</a>
-	<a class="btn btn-outline-dark my-2" role = "button" th:href="@{/default}">Home</a>
-	
+
+	<a class="btn btn-outline-dark my-4" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/admin/regioneForm}">Aggiungi regione</a>
+	<a class="btn btn-outline-dark my-4" role = "button" th:href="@{/default}">Home</a>
+
 </div>
 </body>
 </html>

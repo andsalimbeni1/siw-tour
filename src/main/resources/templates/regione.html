@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
 <title>Catering SIW-2022</title>
 <style type="text/css">
+
 	body{
 		background-image: url("/images/catering.png");
 		font-family: 'Raleway', sans-serif;
@@ -37,25 +38,19 @@
 </head>
 <body>
 <div class="p-4 main-wrapper my-5 m-auto rounded" align="center">
-	<h1 class="border-bottom pb-3">Dettagli piatto</h1>
-	<div th:if="${piatto}">
+<h1 class="border-bottom pb-3">Dettagli regione</h1>
+	<div th:if="${regione}" th:object="${regione}">
 		<div class="mt-4">
-			<strong class="fs-4">Nome: </strong><span class="fs-4" th:text="${piatto.nome}">Nome</span>
+			<strong class="fs-4">Nome: </strong><span class="fs-4" th:text="*{nome}">Nome</span>
 		</div>
 		<div class="mt-4">
-			<strong class="fs-4">Descrizione: </strong><span class="fs-4" th:text="${piatto.descrizione}">Descrizione</span>
-		</div>
-		<div class="my-4">
-			<strong class="fs-4">Ingredienti:</strong>
-			<ul class="list-group list-group-flush rounded mt-2">
-				<li class="list-group-item fs-5" th:each="ingrediente : ${ingredienti}">
-				<span th:text="*{ingrediente.nome}">Ingrediente</span>
-			</ul>
+			<strong class="fs-4">Mare: </strong><span class="fs-4" th:text="*{mare}">Mare</span>
 		</div>
 	</div>
-	<div th:unless="${piatto}">Questo piatto non esiste</div>
-	<a class="btn btn-outline-dark mt-4" role = "button" th:href="@{/allPiatti}">Elenco piatti</a>
-	<a class="btn btn-danger mt-4" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{'/admin/deletePiatto'+'/'+${piatto.id}}">Elimina piatto</a>
+	<div th:unless="${regione}">Questa regione non esiste</div>
+	
+	<a class="btn btn-outline-dark mt-4" role = "button" href="/allRegioni" th:href="@{/allRegioni}">Elenco regioni</a>
+	<a class="btn btn-danger mt-4" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{'/deleteRegione'+'/'+${regione.id}}">Elimina regione</a>
 </div>
 </body>
 </html>

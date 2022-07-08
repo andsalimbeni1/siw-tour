@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
 <title>Catering SIW-2022</title>
 <style type="text/css">
-
 	body{
 		background-image: url("/images/catering.png");
 		font-family: 'Raleway', sans-serif;
@@ -23,8 +22,7 @@
 	   width: 50vw;
 		  box-sizing: border-box;
    }
-   
-   a{
+    a{
     text-decoration: none;
     font-size: larger;
     margin: 2em;
@@ -38,22 +36,19 @@
 </head>
 <body>
 <div class="p-4 main-wrapper my-5 m-auto rounded" align="center">
-<h1 class="border-bottom pb-3">Dettagli chef</h1>
-	<div th:if="${chef}" th:object="${chef}">
+	<h1 class="border-bottom pb-3">Dettagli attrazione</h1>
+	<div th:if="${attrazione}" th:object="${attrazione}">
 		<div class="mt-4">
-			<strong class="fs-4">Nome: </strong><span class="fs-4" th:text="*{nome}">Nome</span>
-		</div>
-		<div class="mt-4">
-			<strong class="fs-4">Cognome: </strong><span class="fs-4" th:text="*{cognome}">Cognome</span>
+			<strong class="fs-4">Nome: </strong><span class="fs-4"th:text="*{nome}">Nome</span>
 		</div>
 		<div class="my-4">
-			<strong class="fs-4">Nazionalità: </strong><span class="fs-4" th:text="*{nazionalita}">Nazionalità</span>
+			<strong class="fs-4">Descrizione: </strong><span class="fs-4"th:text="*{descrizione}">Descrizione</span>
 		</div>
 	</div>
-	<div th:unless="${chef}">Questo chef non esiste</div>
+	<div th:unless="${attrazione}">Questa attrazione non esiste</div>
 	
-	<a class="btn btn-outline-dark mt-4" role = "button" href="/allChefs" th:href="@{/allChefs}">Elenco chef</a>
-	<a class="btn btn-danger mt-4" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{'/deleteChef'+'/'+${chef.id}}">Elimina chef</a>
+	<a class="btn btn-outline-dark mt-4" role = "button" href="/allAttrazioni" th:href="@{/allAttrazioni}">Elenco attrazioni</a>
+	<a class="btn btn-danger mt-4" role = "button" th:href="@{'/admin/deleteAttrazione'+'/'+${attrazione.id}}">Elimina attrazione</a>
 </div>
 </body>
 </html>

@@ -39,15 +39,15 @@
 </head>
 <body>
 <div class="p-4 main-wrapper my-5 m-auto rounded" align="center">
-	<h1 class="border-bottom pb-3">Elenco ingredienti</h1>
+	<h1 class="border-bottom pb-3">Elenco attrazioni</h1>
 	<ul class="list-group list-group-flush rounded my-4">
-	<li class="list-group-item fs-5" th:each="ingrediente : ${ingredienti}">
-		<a href="ingrediente.html"
-		th:href="@{'/ingrediente'+'/'+${ingrediente.id}}"
-		th:text="${ingrediente.nome}">Ingrediente</a>
+	<li class="list-group-item fs-5" th:each="attrazione : ${attrazioni}">
+		<a href="attrazione.html"
+		th:href="@{'/attrazione'+'/'+${attrazione.id}}"
+		th:text="${attrazione.nome}">Attrazione</a>
 	</li>
 	</ul>
-	<a class="btn btn-outline-dark my-2" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/admin/ingredienteForm}">Aggiungi ingrediente</a>
+	<a class="btn btn-outline-dark my-2" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/admin/attrazioneForm}">Aggiungi attrazione</a>
 	<a class="btn btn-outline-dark my-2" role = "button" th:href="@{/default}">Home</a>
 </div>
 </body>

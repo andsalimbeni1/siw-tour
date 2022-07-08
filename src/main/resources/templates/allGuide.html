@@ -39,16 +39,16 @@
 </head>
 <body>
 <div class="p-4 main-wrapper my-5 m-auto rounded" align="center">
-<h1 class="border-bottom pb-3">Elenco chef</h1>
+<h1 class="border-bottom pb-3">Elenco guide</h1>
 	<ul class="list-group list-group-flush rounded my-4">
-	<li class="list-group-item fs-5" th:each="chef : ${chefs}">
-		<a href="chef.html"
-		th:href="@{'/chef'+'/'+${chef.id}}"
-		th:text="${chef.nome + ' ' + chef.cognome}">Chef</a>
+	<li class="list-group-item fs-5" th:each="guida : ${guide}">
+		<a href="guida.html"
+		th:href="@{'/guida'+'/'+${guida.id}}"
+		th:text="${guida.nome + ' ' + guida.cognome}">Guida</a>
 	</li>
 	</ul>
 
-	<a class="btn btn-outline-dark my-4" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/admin/chefForm}">Aggiungi chef</a>
+	<a class="btn btn-outline-dark my-4" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/admin/guidaForm}">Aggiungi guida</a>
 	<a class="btn btn-outline-dark my-4" role = "button" th:href="@{/default}">Home</a>
 
 </div>

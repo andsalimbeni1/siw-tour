@@ -22,7 +22,8 @@
 	   width: 50vw;
 		  box-sizing: border-box;
    }
-    a{
+   
+   a{
     text-decoration: none;
     font-size: larger;
     margin: 2em;
@@ -36,22 +37,25 @@
 </head>
 <body>
 <div class="p-4 main-wrapper my-5 m-auto rounded" align="center">
-	<h1 class="border-bottom pb-3">Dettagli ingrediente</h1>
-	<div th:if="${ingrediente}" th:object="${ingrediente}">
+	<h1 class="border-bottom pb-3">Dettagli città</h1>
+	<div th:if="${citta}">
 		<div class="mt-4">
-			<strong class="fs-4">Nome: </strong><span class="fs-4"th:text="*{nome}">Nome</span>
+			<strong class="fs-4">Nome: </strong><span class="fs-4" th:text="${citta.nome}">Nome</span>
 		</div>
 		<div class="mt-4">
-			<strong class="fs-4">Origine: </strong><span class="fs-4"th:text="*{origine}">Origine</span>
+			<strong class="fs-4">Regione: </strong><span class="fs-4" th:text="${citta.regione.nome}">Regione</span>
 		</div>
 		<div class="my-4">
-			<strong class="fs-4">Descrizione: </strong><span class="fs-4"th:text="*{descrizione}">Descrizione</span>
+			<strong class="fs-4">Attrazioni:</strong>
+			<ul class="list-group list-group-flush rounded mt-2">
+				<li class="list-group-item fs-5" th:each="attrazione : ${attrazioni}">
+				<span th:text="*{attrazione.nome}">Attrazione</span>
+			</ul>
 		</div>
 	</div>
-	<div th:unless="${ingrediente}">Questo ingrediente non esiste</div>
-	
-	<a class="btn btn-outline-dark mt-4" role = "button" href="/allIngredienti" th:href="@{/allIngredienti}">Elenco ingredienti</a>
-	<a class="btn btn-danger mt-4" role = "button" th:href="@{'/admin/deleteIngrediente'+'/'+${ingrediente.id}}">Elimina ingrediente</a>
+	<div th:unless="${citta}">Questa città non esiste</div>
+	<a class="btn btn-outline-dark mt-4" role = "button" th:href="@{/allCitta}">Elenco città</a>
+	<a class="btn btn-danger mt-4" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{'/admin/deleteCitta'+'/'+${citta.id}}">Elimina città</a>
 </div>
 </body>
 </html>

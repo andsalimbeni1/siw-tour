@@ -24,7 +24,7 @@ public class RegioneController {
 	@GetMapping("/allRegioni")
 	private String allRegioni(Model model) {
 		model.addAttribute("regioni", this.regioneService.getAllRegioni());
-		return "allAttrazioni";
+		return "allRegioni";
 	}
 	
 	@GetMapping("/regione/{id}")

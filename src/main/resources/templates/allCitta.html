@@ -39,15 +39,15 @@
 </head>
 <body>
 <div class="p-4 main-wrapper my-5 m-auto rounded" align="center">
-	<h1 class="border-bottom pb-3">Elenco piatti</h1>
+	<h1 class="border-bottom pb-3">Elenco città</h1>
 	<ul class="list-group list-group-flush rounded my-4">
-	<li class="list-group-item fs-5" th:each="piatto : ${piatti}">
-		<a href="piatto.html"
-		th:href="@{'/piatto'+'/'+${piatto.id}}"
-		th:text="${piatto.nome}">Piatto</a>
+	<li class="list-group-item fs-5" th:each="citta : ${cittas}">
+		<a href="cita.html"
+		th:href="@{'/citta'+'/'+${citta.id}}"
+		th:text="${citta.nome}">Città</a>
 	</li>
 	</ul>
-	<a class="btn btn-outline-dark my-2" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/admin/piattoForm}">Aggiungi piatto</a>
+	<a class="btn btn-outline-dark my-2" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/admin/cittaForm}">Aggiungi città</a>
 	<a class="btn btn-outline-dark my-2" role = "button" th:href="@{/default}">Home</a>
 
 </div>
