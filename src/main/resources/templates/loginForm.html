@@ -6,23 +6,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
-<title>Catering SIW-2022</title>
+<title>Tour SIW-2022</title>
 <style type="text/css">
-	body{
-        background-image: url("/images/catering.png");
-		font-family: 'Raleway', sans-serif;
-		background-attachment: fixed;
+
+	.navbar-custom{
+		height:100px;
+	}
+
+    body {
+    background-image: url("https://s1.1zoom.me/b5050/104/Italy_Rome_Colosseum_Evening_551982_1920x1080.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Raleway', sans-serif;
     }
 
-	input{
-		box-sizing:border-box;
-	}
-	
-	.main-wrapper{
+    .main-wrapper{
         height: 100%;
         background-color: rgba(255, 255, 255, 0.90);
-        width: 25vw;
+        width: 500px;
    	    box-sizing: border-box;
+    }
+
+    input{
+        box-sizing: border-box;
     }
     
     a{
@@ -36,21 +44,25 @@
     color: gray;
     }
 
-	
 </style>
 </head>
 <body>
-	<div class="p-4 main-wrapper mt-5 m-auto rounded">
-		<h1 class="border-bottom pb-3">Accedi</h1>
+<nav class="navbar navbar-custom navbar-expand-lg bg-light">
+  <div class="container-fluid">
+     <span class="navbar-brand mb-0 h1">Tour SIW-2022</span>
+  </div>
+</nav>
+    <div class="p-4 main-wrapper my-5 m-auto rounded ">
+        <h1 class="border-bottom border-dark pb-3">Login</h1>
 		<form action="#" th:action="@{/login}" method="post">
-			<div class="mt-4">
+			<div class="mt-3">
 			<label class="form-label fs-4">Username:</label>
 			<span><input class="form-control" name = "username" type="text" required/> </span>
 			</div>
 			
 			<br/>
 			
-			<div class="my-4">
+			<div class="my-3">
 			<label class="form-label fs-4">Password:</label>
 			<span><input class="form-control" name = "password" type="password" required/> </span>
 			</div>
