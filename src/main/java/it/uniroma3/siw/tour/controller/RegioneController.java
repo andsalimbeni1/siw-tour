@@ -47,7 +47,7 @@ public class RegioneController {
 	}
 	
 	@PostMapping("/admin/regioneForm")
-	private String postRegioneForm(@Valid @ModelAttribute("attrazione") Regione regione, BindingResult bindingResult) {
+	private String postRegioneForm(@Valid @ModelAttribute("regione") Regione regione, BindingResult bindingResult) {
 		
 		if(!bindingResult.hasErrors()) {
 			regioneService.saveRegione(regione);

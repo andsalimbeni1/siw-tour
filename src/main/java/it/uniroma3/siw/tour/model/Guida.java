@@ -2,6 +2,7 @@ package it.uniroma3.siw.tour.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Guida {
 	@NotBlank(message="Inserire una nazionalità")
 	private String nazionalita;
 	
-	@OneToMany(mappedBy = "guida")
+	@OneToMany(mappedBy = "guida", cascade=CascadeType.REMOVE)
 	private List<Escursione> escursioni;
 
 	public Long getId() {

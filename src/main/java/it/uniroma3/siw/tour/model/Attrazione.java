@@ -1,5 +1,6 @@
 package it.uniroma3.siw.tour.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,7 @@ public class Attrazione {
 	@NotBlank(message="Inserire una descrizione")
 	private String descrizione;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	private Citta citta;
 
 	public Long getId() {

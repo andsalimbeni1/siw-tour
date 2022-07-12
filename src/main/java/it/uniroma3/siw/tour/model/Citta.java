@@ -3,6 +3,7 @@ package it.uniroma3.siw.tour.model;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class Citta {
 	@NotBlank(message="Inserire un nome")
 	private String nome;
 	
-	@ManyToMany(mappedBy="citta")
+	@ManyToMany(mappedBy="citta", cascade=CascadeType.REMOVE)
 	private List<Escursione> escursioni = new LinkedList<>();
 	
 	@ManyToOne

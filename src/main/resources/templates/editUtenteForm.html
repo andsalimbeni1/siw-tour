@@ -56,19 +56,19 @@
           <a class="nav-link active" aria-current="page" th:href="@{/default}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/allEscursioni}">Gestisci escursioni</a>
+          <a class="nav-link" th:href="@{/allEscursioni}">Elenco escursioni</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/allCitta}">Gestisci città</a>
+          <a class="nav-link" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/allCitta}">Elenco città</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/allAttrazioni}">Gestisci attrazioni</a>
+          <a class="nav-link" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/allAttrazioni}">Elenco attrazioni</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/allRegioni}">Gestisci regioni</a>
+          <a class="nav-link" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/allRegioni}">Elenco regioni</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/allGuide}">Gestisci guide</a>
+          <a class="nav-link" th:href="@{/allGuide}">Elenco guide</a>
         </li>
       </ul>
     </div>
@@ -103,7 +103,7 @@
 			<span th:if="${#fields.hasErrors('utenteEdit.birthday')}" th:errors="*{utenteEdit.birthday}">Errore compleanno</span><br/>
 			</div>
 			
-			<button class="btn btn-outline-success my-2" type="submit">Invio</button>
+			<button class="btn btn-outline-success my-2" type="submit">Modifica</button>
 			<a class="btn btn-outline-dark my-2" role = "button"href="profilo" th:href="@{/profilo}">Torna al profilo</a>
 			
 		

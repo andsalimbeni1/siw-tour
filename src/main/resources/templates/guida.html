@@ -55,16 +55,16 @@
           <a class="nav-link active" aria-current="page" th:href="@{/default}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/allEscursioni}">Gestisci escursioni</a>
+          <a class="nav-link" th:href="@{/allEscursioni}">Elenco escursioni</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/allCitta}">Gestisci città</a>
+          <a class="nav-link" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/allCitta}">Elenco città</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/allAttrazioni}">Gestisci attrazioni</a>
+          <a class="nav-link" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/allAttrazioni}">Elenco attrazioni</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/allRegioni}">Gestisci regioni</a>
+          <a class="nav-link" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{/allRegioni}">Elenco regioni</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" th:href="@{/profilo}">Profilo utente</a>
@@ -89,7 +89,7 @@
 	<div th:unless="${guida}">Questa guida non esiste</div>
 	
 	<a class="btn btn-outline-dark mt-4" role = "button" href="/allGuide" th:href="@{/allGuide}">Elenco guide</a>
-	<a class="btn btn-danger mt-4" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{'/deleteGuida'+'/'+${guida.id}}">Elimina guida</a>
+	<a class="btn btn-danger mt-4" role = "button" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}" th:href="@{'/admin/deleteGuida'+'/'+${guida.id}}">Elimina guida</a>
 </div>
 </body>
 </html>

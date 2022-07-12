@@ -3,12 +3,12 @@ package it.uniroma3.siw.tour.model;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -20,11 +20,10 @@ public class Regione {
 	
 	@NotBlank(message="Inserire un nome")
 	private String nome;
-	
-	@AssertFalse
+
 	private Boolean mare;
 	
-	@OneToMany(mappedBy="regione")
+	@OneToMany(mappedBy="regione", cascade=CascadeType.REMOVE)
 	private List<Citta> citta = new LinkedList<>();
 
 	public Long getId() {
